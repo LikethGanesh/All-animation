@@ -1,0 +1,303 @@
+:root {
+  --bg: #090c12;
+  --dock-bg: rgba(15, 20, 31, 0.75);
+  --dock-border: rgba(255, 255, 255, 0.08);
+  --dock-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  
+  /* Dynamic Theme Variables injected by JS */
+  --theme-rgb: 94, 231, 255; 
+  --theme-color: rgb(var(--theme-rgb));
+  
+  --white: #ffffff;
+  --text-main: #ffffff;
+  --text-muted: #7d8c9e;
+  --text-hint: #415164;
+
+  --speed: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--text-main);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: --theme-rgb 0.4s ease;
+}
+
+.arc-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 800px;
+  padding: 40px 20px;
+  position: relative;
+  text-align: center;
+}
+
+.ambient-glow {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 360px;
+  height: 240px;
+  background: radial-gradient(circle at center, rgba(var(--theme-rgb), 0.15) 0%, rgba(var(--theme-rgb), 0.02) 55%, transparent 75%);
+  filter: blur(45px);
+  pointer-events: none;
+  z-index: 0;
+  transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1), background 0.4s ease;
+}
+
+.hero-title {
+  font-size: 68px;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1;
+  margin-bottom: 14px;
+  color: var(--white);
+  text-shadow: 0 4px 30px rgba(255, 255, 255, 0.15);
+  position: relative;
+  z-index: 1;
+}
+
+.hero-subtitle {
+  font-size: 15px;
+  color: var(--text-muted);
+  font-weight: 400;
+  max-width: 460px;
+  margin: 0 auto 56px;
+  line-height: 1.5;
+  position: relative;
+  z-index: 1;
+}
+
+.dock-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.dock {
+  position: relative;
+  width: 440px;
+  height: 72px;
+  background: var(--dock-bg);
+  border: 1px solid var(--dock-border);
+  border-radius: 9999px;
+  box-shadow: var(--dock-shadow);
+  backdrop-filter: blur(24px) saturate(180%);
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  touch-action: none;
+  cursor: grab;
+  margin-bottom: 30px; 
+  
+  /* Genuine mirror reflection */
+  -webkit-box-reflect: below 2px linear-gradient(to bottom, transparent 30%, rgba(255, 255, 255, 0.15) 100%);
+}
+
+.dock:active {
+  cursor: grabbing;
+}
+
+.dock-rim {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  pointer-events: none;
+  border-radius: 9999px 9999px 0 0;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.light {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: visible;
+}
+
+.light__diffuse {
+  stroke: var(--theme-color);
+  stroke-width: 13px;
+  stroke-opacity: 0.14;
+  fill: rgba(var(--theme-rgb), 0.03);
+  filter: url(#glow-blur);
+  transition: stroke 0.4s ease, fill 0.4s ease;
+}
+
+.light__glow {
+  stroke: var(--theme-color);
+  stroke-width: 5.5px;
+  stroke-opacity: 0.5;
+  fill: none;
+  filter: drop-shadow(0 0 6px rgba(var(--theme-rgb), 0.8));
+  transition: stroke 0.4s ease, filter 0.4s ease;
+}
+
+.light__core {
+  stroke: var(--theme-color);
+  stroke-width: calc(2.2px + var(--speed, 0) * 0.75px);
+  fill: rgba(var(--theme-rgb), 0.05);
+  filter: drop-shadow(0 0 4px var(--theme-color));
+  transition: stroke 0.4s ease, fill 0.4s ease, filter 0.4s ease;
+}
+
+.light__center {
+  stroke: var(--white);
+  stroke-width: 1px;
+  stroke-opacity: 0.9;
+  fill: none;
+}
+
+.tab-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.tab-item {
+  flex: 1;
+  height: 56px;
+  border-radius: 9999px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  color: #657487;
+  position: relative;
+  transition: color 0.2s ease;
+  outline: none;
+}
+
+.tab-item:hover {
+  color: #b0c0d4;
+}
+
+.tab-item.active {
+  color: var(--white);
+}
+
+.icon-box {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tab-item:hover .icon-box {
+  transform: translateY(-2px);
+}
+
+.tab-item.active .icon-box {
+  transform: scale(1.05);
+}
+
+.tab-icon {
+  width: 20px;
+  height: 20px;
+  stroke-width: 1.9;
+  transition: stroke 0.2s ease, filter 0.2s ease;
+}
+
+.tab-item.active .tab-icon {
+  stroke: var(--white);
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+}
+
+.tab-label {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  opacity: 0.5;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.tab-item.active .tab-label {
+  opacity: 1;
+  color: var(--white);
+  font-weight: 700;
+}
+
+.interaction-hint {
+  font-size: 12.5px;
+  color: var(--text-hint);
+  letter-spacing: 0.02em;
+  font-weight: 500;
+}
+
+/* Animation for when the light ring arrives */
+@keyframes iconArrive {
+  0% { 
+    transform: scale(0.85); 
+    filter: drop-shadow(0 0 0px rgba(var(--theme-rgb), 0));
+  }
+  50% { 
+    transform: scale(1.25); 
+    filter: drop-shadow(0 0 14px rgba(var(--theme-rgb), 1)); 
+  }
+  100% { 
+    transform: scale(1.05); 
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5)); 
+  }
+}
+
+.tab-item.arrived .tab-icon {
+  animation: iconArrive 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Tactile click squish animation */
+@keyframes squishBounce {
+  0% { 
+    transform: scale(1); 
+  }
+  40% { 
+    transform: scale(0.65); /* Shrinks down drastically */
+  }
+  100% { 
+    transform: scale(1.05); /* Bounces back to the active scale */
+  }
+}
+
+.tab-item.pressed .icon-box {
+  animation: squishBounce 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@media (max-width: 520px) {
+  .hero-title { font-size: 46px; }
+  .hero-subtitle { font-size: 14px; margin-bottom: 40px; }
+  .dock { width: 100%; max-width: 360px; height: 66px; }
+}

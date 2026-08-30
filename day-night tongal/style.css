@@ -1,0 +1,101 @@
+/* --- Page Layout & Theme Transition --- */
+body {
+    transition: background 0.4s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #ffffff;
+    margin: 0;
+}
+
+/* Changes the whole page background when the switch is clicked */
+body:has(#theme:checked) {
+    background: #121212;
+}
+
+/* --- Base Switch UI (Light Mode) --- */
+.premium-switch input {
+    display: none;
+}
+
+.premium-toggle {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 190px;
+    height: 92px;
+    background: linear-gradient(145deg, #f8f8f8, #d9d9d9);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.premium-toggle::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50px;
+    box-shadow: inset 7px 7px 12px rgba(0, 0, 0, .16),
+                inset -6px -6px 12px rgba(255, 255, 255, .9);
+    transition: all 0.4s ease;
+    pointer-events: none;
+}
+
+.blob {
+    position: absolute;
+    left: 13px;
+    width: 66px;
+    height: 66px;
+    background: linear-gradient(145deg, #ffc85a, #ed8b00);
+    box-shadow: 7px 9px 12px rgba(0, 0, 0, .25);
+    border-radius: 50%;
+    transition: all 0.4s ease;
+}
+
+/* --- Icons --- */
+.icon {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    transition: all 0.4s ease;
+    pointer-events: none;
+}
+
+.icon.sun {
+    left: 32px;
+    color: #ffffff;
+}
+
+.icon.moon {
+    right: 32px;
+    color: #777777;
+}
+
+/* --- Active Switch UI (Dark Mode) --- */
+#theme:checked + .premium-toggle {
+    background: #2a2a2a;
+}
+
+#theme:checked + .premium-toggle::before {
+    box-shadow: inset 7px 7px 12px rgba(0, 0, 0, .8),
+                inset -6px -6px 12px rgba(255, 255, 255, .05);
+}
+
+#theme:checked + .premium-toggle .blob {
+    transform: translateX(98px);
+    background: linear-gradient(145deg, #444, #222);
+    box-shadow: 7px 9px 12px rgba(0, 0, 0, .8);
+}
+
+/* Swap icon colors when dark mode is active */
+#theme:checked + .premium-toggle .icon.sun {
+    color: #777777;
+}
+
+#theme:checked + .premium-toggle .icon.moon {
+    color: #ffffff;
+}

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Den - Sign In</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- FAST HARDWARE-ACCELERATED CURSOR SPOTLIGHT -->
+  <div id="cursorLight" class="cursor-light"></div>
+
+  <div class="login-wrapper">
+    <!-- CHUBBY GLOSSY HUSKY MASCOT -->
+    <div class="husky-container" id="husky">
+      <svg class="husky-svg" viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <!-- Head 3D Dome Radial Gradient -->
+          <radialGradient id="huskyHeadGrad" cx="50%" cy="28%" r="62%">
+            <stop offset="0%" stop-color="#5a6880" />
+            <stop offset="55%" stop-color="#344154" />
+            <stop offset="100%" stop-color="#1e2633" />
+          </radialGradient>
+
+          <!-- Head Top Highlight -->
+          <linearGradient id="huskyTopGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.32" />
+            <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+          </linearGradient>
+
+          <!-- Eye Iris Gradient -->
+          <radialGradient id="huskyIrisGrad" cx="38%" cy="38%" r="60%">
+            <stop offset="0%" stop-color="#93c5fd" />
+            <stop offset="55%" stop-color="#3b82f6" />
+            <stop offset="100%" stop-color="#1d4ed8" />
+          </radialGradient>
+
+          <!-- Nose Gradient -->
+          <linearGradient id="huskyNoseGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#334155" />
+            <stop offset="100%" stop-color="#0f172a" />
+          </linearGradient>
+
+          <!-- Paw Base Gradient -->
+          <linearGradient id="huskyPawGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#475569" />
+            <stop offset="100%" stop-color="#1e293b" />
+          </linearGradient>
+        </defs>
+
+        <!-- Ears -->
+        <g class="ears">
+          <polygon points="54,88 28,20 84,54" fill="#344154" />
+          <polygon points="53,84 37,34 78,57" fill="#e2e8f0" />
+          <polygon points="146,88 172,20 116,54" fill="#344154" />
+          <polygon points="147,84 163,34 122,57" fill="#e2e8f0" />
+          <path d="M 68,46 Q 100,40 132,46" stroke="rgba(255,255,255,0.45)" stroke-width="2.2" fill="none" stroke-linecap="round" />
+        </g>
+
+        <!-- Lower Body & White Chest Stripe -->
+        <ellipse cx="100" cy="192" rx="42" ry="34" fill="#1e293b" />
+        <path d="M 85,168 Q 100,165 115,168 L 118,222 Q 100,230 82,222 Z" fill="#ffffff" />
+
+        <!-- Head Base -->
+        <ellipse cx="100" cy="100" rx="64" ry="60" fill="url(#huskyHeadGrad)" />
+        <ellipse cx="100" cy="58" rx="34" ry="14" fill="url(#huskyTopGlow)" />
+
+        <!-- Husky White Face Mask & Forehead Flame Markings -->
+        <path d="M 44,104 
+                 C 40,146 64,172 100,172 
+                 C 136,172 160,146 156,104 
+                 C 150,94 130,94 124,102 
+                 C 114,110 114,82 100,70 
+                 C 86,82 86,110 76,102 
+                 C 70,94 50,94 44,104 Z" 
+              fill="#f8fafc" />
+
+        <!-- Eyebrow Dots -->
+        <ellipse cx="73" cy="83" rx="7" ry="5" fill="#64748b" opacity="0.65" transform="rotate(-15 73 83)" />
+        <ellipse cx="127" cy="83" rx="7" ry="5" fill="#64748b" opacity="0.65" transform="rotate(15 127 83)" />
+
+        <!-- Blush Cheeks -->
+        <ellipse cx="60" cy="126" rx="9" ry="5.5" fill="#fed7aa" opacity="0.85" />
+        <ellipse cx="140" cy="126" rx="9" ry="5.5" fill="#fed7aa" opacity="0.85" />
+
+        <!-- Whisker Dots -->
+        <circle cx="76" cy="138" r="1.1" fill="#94a3b8" />
+        <circle cx="81" cy="143" r="1.1" fill="#94a3b8" />
+        <circle cx="75" cy="146" r="1.1" fill="#94a3b8" />
+        <circle cx="124" cy="138" r="1.1" fill="#94a3b8" />
+        <circle cx="119" cy="143" r="1.1" fill="#94a3b8" />
+        <circle cx="125" cy="146" r="1.1" fill="#94a3b8" />
+
+        <!-- Big Blue Eyes with Double Catchlights -->
+        <g class="husky-eyes" id="huskyEyes">
+          <!-- Left Eye -->
+          <g class="eye-group" id="leftEyeGroup">
+            <circle cx="75" cy="112" r="13.5" fill="#ffffff" />
+            <circle cx="75" cy="112" r="11.5" fill="url(#huskyIrisGrad)" />
+            <circle class="eye-pupil" id="leftPupil" cx="75" cy="112" r="7" fill="#0f172a" />
+            <circle cx="71.5" cy="108" r="3.2" fill="#ffffff" />
+            <circle cx="78.5" cy="116" r="1.4" fill="#ffffff" />
+          </g>
+
+          <!-- Right Eye -->
+          <g class="eye-group" id="rightEyeGroup">
+            <circle cx="125" cy="112" r="13.5" fill="#ffffff" />
+            <circle cx="125" cy="112" r="11.5" fill="url(#huskyIrisGrad)" />
+            <circle class="eye-pupil" id="rightPupil" cx="125" cy="112" r="7" fill="#0f172a" />
+            <circle cx="121.5" cy="108" r="3.2" fill="#ffffff" />
+            <circle cx="128.5" cy="116" r="1.4" fill="#ffffff" />
+          </g>
+        </g>
+
+        <!-- Muzzle / Nose & W-Smile -->
+        <ellipse cx="100" cy="126" rx="10" ry="7.5" fill="url(#huskyNoseGrad)" />
+        <ellipse cx="98" cy="124" rx="2.5" ry="1.2" fill="#9ca3af" opacity="0.6" />
+        <path d="M 93,137 C 96,141 99,141 100,137 C 101,141 104,141 107,137" stroke="#1e293b" stroke-width="2.2" stroke-linecap="round" fill="none" />
+        <line x1="100" y1="133.5" x2="100" y2="137" stroke="#1e293b" stroke-width="2.2" stroke-linecap="round" />
+
+        <!-- Chubby Front Paws -->
+        <!-- Left Paw -->
+        <g class="paw paw-left" id="pawLeft">
+          <ellipse cx="74" cy="192" rx="16.5" ry="17.5" fill="url(#huskyPawGrad)" />
+          <ellipse cx="74" cy="197" rx="7.5" ry="5.8" fill="#94a3b8" />
+          <circle cx="64.5" cy="187" r="3.3" fill="#94a3b8" />
+          <circle cx="74" cy="182" r="3.3" fill="#94a3b8" />
+          <circle cx="83.5" cy="187" r="3.3" fill="#94a3b8" />
+        </g>
+
+        <!-- Right Paw -->
+        <g class="paw paw-right" id="pawRight">
+          <ellipse cx="126" cy="192" rx="16.5" ry="17.5" fill="url(#huskyPawGrad)" />
+          <ellipse cx="126" cy="197" rx="7.5" ry="5.8" fill="#94a3b8" />
+          <circle cx="116.5" cy="187" r="3.3" fill="#94a3b8" />
+          <circle cx="126" cy="182" r="3.3" fill="#94a3b8" />
+          <circle cx="135.5" cy="187" r="3.3" fill="#94a3b8" />
+        </g>
+      </svg>
+    </div>
+
+    <!-- GLASSMORPHISM LOGIN CARD -->
+    <div class="card glass-card">
+      <header class="card-header">
+        <h1 class="brand-title">Den</h1>
+        <p class="brand-subtitle">Welcome back. Your husky’s keeping watch.</p>
+      </header>
+
+      <form id="loginForm" autocomplete="off">
+        <div class="input-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" class="glass-input" value="frostpup" required placeholder="Enter username">
+        </div>
+
+        <div class="input-group">
+          <label for="password">Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="password" class="glass-input" value="••••••••••••••••" required placeholder="Enter password">
+            <button type="button" id="togglePassword" class="icon-btn" aria-label="Toggle password visibility">
+              <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="form-options">
+          <label class="checkbox-container">
+            <input type="checkbox" checked>
+            <span class="checkmark"></span>
+            <span class="label-text">Remember me</span>
+          </label>
+          <a href="#" class="forgot-link">Forgot password?</a>
+        </div>
+
+        <button type="submit" id="submitBtn" class="btn doorbtn">
+          <span class="doorbtn__label" id="btnLabel">Sign in</span>
+          <span class="door-scene">
+            <span class="dooric__glow"></span>
+            <span class="dooric__frame">
+              <span class="dooric__panel"></span>
+            </span>
+            <span class="dooric__person">
+              <span class="stickman-head"></span>
+              <span class="stickman-body"></span>
+              <span class="stickman-leg leg--front"></span>
+              <span class="stickman-leg leg--back"></span>
+            </span>
+          </span>
+        </button>
+      </form>
+
+      <p class="status-subtitle" id="statusMessage">Welcome back!</p>
+
+      <div class="divider">
+        <span>or continue with</span>
+      </div>
+
+      <div class="social-actions">
+        <button type="button" class="social-btn glass-btn">
+          <svg viewBox="0 0 24 24" width="18" height="18">
+            <path fill="#EA4335" d="M12 5c1.6 0 3 .6 4.1 1.7l3.1-3.1C17.3 1.8 14.8 1 12 1 7.4 1 3.5 3.6 1.6 7.4l3.7 2.9C6.2 7.1 8.8 5 12 5z"/>
+            <path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.5h6.5c-.3 1.5-1.1 2.8-2.4 3.7l3.7 2.9c2.2-2 3.7-5 3.7-8.8z"/>
+            <path fill="#FBBC05" d="M5.3 14.7c-.2-.7-.4-1.5-.4-2.7 0-1.2.2-2 .4-2.7L1.6 6.4C.6 8.4 0 10.1 0 12s.6 3.6 1.6 5.6l3.7-2.9z"/>
+            <path fill="#34A853" d="M12 23c3.2 0 6-1.1 8-3l-3.7-2.9c-1.1.7-2.5 1.2-4.3 1.2-3.2 0-5.8-2.1-6.7-5.3L1.6 16C3.5 19.8 7.4 23 12 23z"/>
+          </svg>
+          <span>Google</span>
+        </button>
+
+        <button type="button" class="social-btn glass-btn">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.38c.62-.75 1.04-1.8 0.92-2.85-.9.04-1.99.6-2.63 1.35-.57.65-1.07 1.72-.94 2.74 1 .08 2.03-.49 2.65-1.24z"/>
+          </svg>
+          <span>Apple</span>
+        </button>
+      </div>
+
+      <footer class="card-footer">
+        <span>New to Den?</span> <a href="#">Create account</a>
+      </footer>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
